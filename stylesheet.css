@@ -1,0 +1,20 @@
+img {
+	height: 100px;
+	width: 100px;
+
+}
+#gameCell {
+
+	width: 120px;
+	height: 200px;
+}
+
+.hide {
+	display: none;
+}
+.row {
+	height: auto;
+	width: auto;
+	display: inline-block;
+	float: left;
+}
