@@ -1,5 +1,5 @@
-var apikey = 'YOUR-API-KEY'; // Put your API key here
-
+var apikey = 'fbf1f9033c363564ebbbfddfee9708bc18e08cb0'; 
+var batman;
 // Use this function to do stuff with your results. 
 // It is called after 'search' is executed.
 function searchCallback(results) {
@@ -8,8 +8,15 @@ function searchCallback(results) {
 
 $(document).ready(function() {
 
+	$("#submit").on("click", function(event){
+		event.preventDefault();
+		batman = $("#game").val();
+		search(batman);
+	});
+
 	// Start the search here!
-	search('batman');
+
+	
 });
 
 // HELPER FUNCTION
@@ -21,7 +28,7 @@ function search(query){
 	    dataType: 'jsonp',
 	    crossDomain: true,
 	    jsonp: 'json_callback',
-	    url: 'http://www.giantbomb.com/api/search/?format=jsonp&api_key=' + apikey +'&query=' + encodeURI(query),
+	    url: 'http://www.giantbomb.com/api/search/?format=jsonp&resources=game&api_key=' + apikey +'&query=' + encodeURI(query),
 	    complete: function() {
 	        console.log('ajax complete');
 	    },
