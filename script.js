@@ -26,7 +26,7 @@ function searchCallback(results) {
 			picture = "http://placehold.it/100x100";
 		} 
 		var hidden = "<div class='hide row'><p>" + release + "</p><p>" + date + "</p><p>" + info + "</p></div>";
-		$("#results").append("<div id='gameCell' class='container col-md-1'><img src='" + picture + "'></img><p>" + results[i].name + "</p>" + hidden + "</div>");
+		$("#results").append("<div id='gameCell' class='container col-md-3'><img src='" + picture + "'></img><p>" + results[i].name + "</p>" + hidden + "</div>");
 			
 		
 	}
