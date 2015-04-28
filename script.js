@@ -4,7 +4,7 @@ var i = 0;
 // Use this function to do stuff with your results. 
 // It is called after 'search' is executed.
 function searchCallback(results) {
-    console.log(results);
+ 
 
     for(i = 0; i <= results.length; i++){
     	var info = results[i].description;
@@ -29,26 +29,29 @@ function searchCallback(results) {
 		if(picture == null || picture == undefined){
 			picture = "http://placehold.it/100x100";
 		} 
-		var hidden = "<div class='hide'><p>" + release + "</p><p>" + date + "</p><p>" + info + "</p></div>";
-		$row.append("<div id='gameCell' class='col-sm-3'><img src='" + picture + "'></img><p>" + results[i].name + "</p>" + hidden + "</div>");
-		
+		var hide = "<div class='info" + [i] +  " modal fade' tabindex='-1' role='dialog' aria-hidden='true'><div class='modal-dialog modal-lg'><div class='modal-content'><p>" + release + "</p><p>" + date + "</p><p>" + info + "</p></div></div></div>";
+		$row.append("<div id='gameCell' class='col-sm-3' roll='button' data-toggle='modal' data-target='.info" + [i] + "'><img src='" + picture + "'></img><p>" + results[i].name + "</p></div>");
+		$("body").append(hide);
 	}
 }
 
 $(document).ready(function() {
 
 	$("#submit").on("click", function(event){
+		$("#results").empty();
+		$(".modal").empty();
 		event.preventDefault();
 		batman = $("#game").val();
 		search(batman);
 		
 	});
-	$("#results").on("click", "#gameCell", function(){
-		$(this).toggleClass();
-		$(this).children("div").toggleClass().hide().slideDown();
+
+	// $("#results").on("click", "#gameCell", function(){
+		
+	// 	$(this).children("div").hide().slideDown();
 
 
-	});
+	// });
 	// Start the search here!
 
 
