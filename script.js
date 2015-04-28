@@ -12,6 +12,10 @@ function searchCallback(results) {
 		var date = results[i].original_release_date;
 		var consoles = results[i].platforms;
 		var release = "";
+		if (i % 4 == 0) {
+			$row = $("<div class='row'></div>");
+			$("#results").append($row)
+		}
 		for (var j = 0; j < consoles.length; j++){
 			release += consoles[j].name + "</p><p>";
 		}
@@ -26,8 +30,7 @@ function searchCallback(results) {
 			picture = "http://placehold.it/100x100";
 		} 
 		var hidden = "<div class='hide'><p>" + release + "</p><p>" + date + "</p><p>" + info + "</p></div>";
-		$("#results").append("<div id='gameCell' class='col-md-1'><img src='" + picture + "'></img><p>" + results[i].name + "</p>" + hidden + "</div>");
-			
+		$row.append("<div id='gameCell' class='col-sm-3'><img src='" + picture + "'></img><p>" + results[i].name + "</p>" + hidden + "</div>");
 		
 	}
 }
@@ -41,7 +44,7 @@ $(document).ready(function() {
 		
 	});
 	$("#results").on("click", "#gameCell", function(){
-		// removed unneeded toggles. removed toggleclass identifier ()
+		$(this).toggleClass();
 		$(this).children("div").toggleClass().hide().slideDown();
 
 
